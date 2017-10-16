@@ -3,8 +3,6 @@ import Modal from 'react-modal';
 import MarkupFrame from 'markup-frame';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import '../static/bootstrap.css';
-import '../static/custom.css';
 import {runReport, closePreview} from  './action'
 
 class ReportClient extends Component {
