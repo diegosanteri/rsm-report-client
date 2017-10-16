@@ -1,10 +1,22 @@
+import './style.css'
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import MarkupFrame from 'markup-frame';
 import { connect } from 'react-redux'
-import { ActionCreator } from 'redux';
+import { bindActionCreators } from 'redux';
 import {runReport, closePreview} from  './action'
-import Reducer from './reducer'
+import reducer from './reducer'
+
+const customStyles = {
+  content : {
+    top                   : '40%',
+    left                  : '60%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+}
 
 class ReportClient extends Component {
   constructor(props) {
@@ -13,11 +25,18 @@ class ReportClient extends Component {
   }
 
   componentWillMount(){
-    this.props.runReport(this.props.reportId)
+    var data = []
+
+    this.props.data.forEach(function(element) {
+      data.push({axis: element})
+    });
+
+    this.props.runReport(this.props.reportId, data, this.props.envData)
   }
 
   closeModal() {
       this.props.closePreview()
+      this.props.onClose()
   }
 
   render() {
@@ -42,4 +61,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ReportClient)
 
-export {Reducer};
+export {reducer};
