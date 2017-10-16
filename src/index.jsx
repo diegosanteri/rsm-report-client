@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import MarkupFrame from 'markup-frame';
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { ActionCreator } from 'redux';
 import {runReport, closePreview} from  './action'
+import Reducer from './reducer'
 
 class ReportClient extends Component {
   constructor(props) {
@@ -40,3 +41,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     runReport
 }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ReportClient)
+
+export {Reducer};
