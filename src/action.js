@@ -7,10 +7,10 @@ export function closePreview(){
     }
 }
 
-export function runReport(reportId, data, envData) {
+export function runReport(url, reportId, data, envData) {
 
     return dispatch => {
-        axios.post(`${BASE_URL}/api/reports`, {reportId, data, envData})
+        axios.post(`${url}`, {reportId, data, envData})
                 .then((response)=>{
                     return dispatch([{
                         type: 'REPORT_GENERATED',

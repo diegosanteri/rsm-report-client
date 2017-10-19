@@ -31,7 +31,7 @@ class ReportClient extends Component {
       data.push({axis: element})
     });
 
-    this.props.runReport(this.props.reportId, data, this.props.envData)
+    this.props.runReport(this.props.url, this.props.reportId, data, this.props.envData)
   }
 
   closeModal() {
